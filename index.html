@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tugasku | Dashboard Tugas Harian</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Tugasku <span>Dashboard Mahasiswa</span></div>
+  <nav><a class="active" href="#">Beranda</a></nav>
+  <div class="top-right">
+    <div class="bell-wrap">
+      <button id="bellBtn" class="bell" aria-label="Notifikasi">&#128276;<span id="badge" class="badge" hidden>0</span></button>
+      <div id="notifPanel" class="notif-panel" hidden>
+        <div class="np-head"><strong>Notifikasi</strong><button id="readAll" class="link">Tandai semua dibaca</button></div>
+        <ul id="notifList"></ul>
+        <div class="np-foot">
+          <label>Ingatkan sebelum deadline
+            <select id="remindSel">
+              <option value="30">30 menit</option><option value="60">1 jam</option>
+              <option value="180">3 jam</option><option value="1440">1 hari</option>
+            </select>
+          </label>
+          <button id="permBtn" class="btn small">Aktifkan notifikasi browser</button>
+        </div>
+      </div>
+    </div>
+    <div class="user"><strong>Mahasiswa</strong><small>Teknik Informatika</small></div>
+  </div>
+</header>
+
+<main class="layout">
+  <aside>
+    <section class="card">
+      <div class="row"><h2>Jadwal Minggu Ini</h2><small id="todayLabel"></small></div>
+      <div id="week" class="week"></div>
+      <div id="dayList" class="day-list"></div>
+    </section>
+    <section class="card">
+      <div class="row"><h2>Perlu Dikerjakan <span id="todoCount" class="pill">0</span></h2></div>
+      <ul id="todoList" class="todo"></ul>
+      <div class="progress-label"><span id="doneText"></span></div>
+      <div class="bar"><i id="doneBar"></i></div>
+    </section>
+  </aside>
+
+  <section class="content">
+    <div class="card">
+      <h2 id="formTitle">Buat Tugas Baru</h2>
+      <form id="taskForm" class="form">
+        <input type="hidden" id="editId">
+        <label class="span2">Judul tugas
+          <input id="fTitle" required maxlength="100" placeholder="Contoh: Kerjakan latihan bab 3">
+        </label>
+        <label>Mata kuliah <select id="fCourse"></select></label>
+        <label>Prioritas
+          <select id="fPrio"><option value="rendah">Rendah</option><option value="sedang" selected>Sedang</option><option value="tinggi">Tinggi</option></select>
+        </label>
+        <label class="span2">Batas waktu <input type="datetime-local" id="fDue" required></label>
+        <label class="span2">Catatan (opsional) <textarea id="fNote" rows="2" maxlength="300"></textarea></label>
+        <div class="span2 actions">
+          <button class="btn" type="submit" id="saveBtn">Simpan tugas</button>
+          <button class="btn ghost" type="button" id="cancelEdit" hidden>Batal</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="row wrap">
+        <h2>Daftar Tugas</h2>
+        <div class="filters">
+          <input id="q" type="search" placeholder="Cari tugas atau mata kuliah">
+          <select id="fStatus"><option value="aktif">Belum selesai</option><option value="selesai">Selesai</option><option value="semua">Semua</option></select>
+        </div>
+      </div>
+      <div id="taskGrid" class="grid"></div>
+    </div>
+  </section>
+</main>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
