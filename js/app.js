@@ -1,6 +1,6 @@
 "use strict";
 // Ubah daftar mata kuliah di sini sesuai jadwalmu.
-const COURSES = ["Matematika Diskrit","Arsitektur dan Organisasi Komputer","Pengantar Pemrograman","Matematika Dasar","Media Sosial","Bahasa Indonesia","Lainnya"];
+const COURSES = ["Olahraga","Baca Alquran","Baca Buku","Cuci Baju","Makan","Lainnya"];
 const KEY = "tugasku.v1";
 const $ = s => document.querySelector(s);
 const DAYS = ["Sen","Sel","Rab","Kam","Jum","Sab","Min"];
